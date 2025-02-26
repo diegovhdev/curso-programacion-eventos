@@ -1,0 +1,54 @@
+import tkinter as tk
+from tkinter import messagebox, simpledialog
+
+class Jugador:
+    def __init__(self, nombre, posicion, numero, edad):
+        self.nombre = nombre
+        self.posicion = posicion
+        self.numero = numero
+        self.edad = edad
+
+    def __str__(self):
+        return f"{self.nombre} - {self.posicion} - {self.numero} - {self.edad} años"
+
+class EquipoFutbol:
+    def __init__(self, master):
+        self.master = master
+        self.master.title("El registro de Equipo de Fútbol 11")
+        
+        self.jugadores = []
+
+        self.label = tk.Label(master, text="Jugadores en el equipo:")
+        self.label.pack()
+
+        self.lista_jugadores = tk.Listbox(master, width=50)
+        self.lista_jugadores.pack()
+
+        self.boton_agregar = tk.Button(master, text="Agregar Jugador", command=self.agregar_jugador)
+        self.boton_agregar.pack()
+
+        self.boton_mostrar = tk.Button(master, text="Mostrar Jugadores", command=self.mostrar_jugadores)
+        self.boton_mostrar.pack()
+
+    def agregar_jugador(self):
+        nombre = simpledialog.askstring("Nombre", "Ingrese el nombre del jugador:")
+        posicion = simpledialog.askstring("Posición", "Ingrese la posición del jugador:")
+        numero = simpledialog.askinteger("Número", "Ingrese el número de camiseta del jugador:")
+        edad = simpledialog.askinteger("Edad", "Ingrese la edad del jugador:")
+
+        if nombre and posicion and numero and edad is not None:
+            nuevo_jugador = Jugador(nombre, posicion, numero, edad)
+            self.jugadores.append(nuevo_jugador)
+            messagebox.showinfo("Éxito", "Jugador agregado correctamente.")
+        else:
+            messagebox.showwarning("Advertencia", "Todos los campos son obligatorios.")
+
+    def mostrar_jugadores(self):
+        self.lista_jugadores.delete(0, tk.END)  # Limpiar la lista antes de mostrar
+        for jugador in self.jugadores:
+            self.lista_jugadores.insert(tk.END, str(jugador))
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = EquipoFutbol(root)
+    root.mainloop()
