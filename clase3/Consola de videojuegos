@@ -1,0 +1,45 @@
+import tkinter as tk
+from tkinter import messagebox  # Importar messagebox
+
+def save_text(title, text_widget):
+    content = text_widget.get("1.0", tk.END).strip()
+    if content:
+        print(f"{title}: {content}")
+        text_widget.delete("1.0", tk.END) 
+        messagebox.showinfo("Guardar Cambios", f"Contenido guardado para {title}.")
+    else:
+        messagebox.showwarning("Advertencia", f"No se puede guardar vacío para {title}.")
+
+def main():
+    global root
+    root = tk.Tk()
+    root.title("Consola de Videojuegos personalizada")
+
+    attributes = {
+        "Potencia de Procesamiento": "Describe la capacidad de la CPU y GPU de tu consola.",
+        "Capacidad de Almacenamiento": "Indica cuánto espacio quieres en tu consola para juegos y datos.",
+        "Conectividad": "Explica las opciones de conectividad como Wi-Fi, Bluetooth, etc.",
+        "Diseño y Ergonomía": "Comenta sobre el diseño físico y la comodidad de uso."
+    }
+
+    for title, description in attributes.items():
+        frame = tk.Frame(root)
+        frame.pack(pady=10, padx=10)
+
+        label = tk.Label(frame, text=title, font=("Arial", 14))
+        label.pack(anchor='w')
+
+        desc_label = tk.Label(frame, text=description)
+        desc_label.pack(anchor='w')
+
+        text_widget = tk.Text(frame, height=5, width=40)
+        text_widget.pack(pady=5)
+
+        save_button = tk.Button(frame, text="Guardar Cambios", 
+                                command=lambda t=title, tw=text_widget: save_text(t, tw))
+        save_button.pack(pady=5)
+
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
