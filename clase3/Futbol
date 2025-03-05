@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox, simpledialog
+from tkinter import messagebox
 
 class Jugador:
     def __init__(self, nombre, posicion, numero, edad):
@@ -14,39 +14,55 @@ class Jugador:
 class EquipoFutbol:
     def __init__(self, master):
         self.master = master
-        self.master.title("El registro de Equipo de Fútbol 11")
+        self.master.title("Gestión de Equipo de Fútbol 11")
         
         self.jugadores = []
 
-        self.label = tk.Label(master, text="Jugadores en el equipo:")
-        self.label.pack()
+        tk.Label(master, text="Nombre:").grid(row=0, column=0)
+        self.entry_nombre = tk.Entry(master)
+        self.entry_nombre.grid(row=0, column=1)
 
-        self.lista_jugadores = tk.Listbox(master, width=50)
-        self.lista_jugadores.pack()
+        tk.Label(master, text="Posición:").grid(row=1, column=0)
+        self.entry_posicion = tk.Entry(master)
+        self.entry_posicion.grid(row=1, column=1)
+
+        tk.Label(master, text="Número:").grid(row=2, column=0)
+        self.entry_numero = tk.Entry(master)
+        self.entry_numero.grid(row=2, column=1)
+
+        tk.Label(master, text="Edad:").grid(row=3, column=0)
+        self.entry_edad = tk.Entry(master)
+        self.entry_edad.grid(row=3, column=1)
 
         self.boton_agregar = tk.Button(master, text="Agregar Jugador", command=self.agregar_jugador)
-        self.boton_agregar.pack()
+        self.boton_agregar.grid(row=4, columnspan=2)
 
-        self.boton_mostrar = tk.Button(master, text="Mostrar Jugadores", command=self.mostrar_jugadores)
-        self.boton_mostrar.pack()
+        self.label = tk.Label(master, text="Jugadores en el equipo:")
+        self.label.grid(row=5, columnspan=2)
+
+        self.lista_jugadores = tk.Listbox(master, width=50)
+        self.lista_jugadores.grid(row=6, columnspan=2)
 
     def agregar_jugador(self):
-        nombre = simpledialog.askstring("Nombre", "Ingrese el nombre del jugador:")
-        posicion = simpledialog.askstring("Posición", "Ingrese la posición del jugador:")
-        numero = simpledialog.askinteger("Número", "Ingrese el número de camiseta del jugador:")
-        edad = simpledialog.askinteger("Edad", "Ingrese la edad del jugador:")
+        nombre = self.entry_nombre.get()
+        posicion = self.entry_posicion.get()
+        numero = self.entry_numero.get()
+        edad = self.entry_edad.get()
 
-        if nombre and posicion and numero and edad is not None:
-            nuevo_jugador = Jugador(nombre, posicion, numero, edad)
+        if nombre and posicion and numero.isdigit() and edad.isdigit():
+            nuevo_jugador = Jugador(nombre, posicion, int(numero), int(edad))
             self.jugadores.append(nuevo_jugador)
+            self.lista_jugadores.insert(tk.END, str(nuevo_jugador))
+            self.limpiar_campos()
             messagebox.showinfo("Éxito", "Jugador agregado correctamente.")
         else:
-            messagebox.showwarning("Advertencia", "Todos los campos son obligatorios.")
+            messagebox.showwarning("Advertencia", "Todos los campos son obligatorios y deben ser válidos.")
 
-    def mostrar_jugadores(self):
-        self.lista_jugadores.delete(0, tk.END)  # Limpiar la lista antes de mostrar
-        for jugador in self.jugadores:
-            self.lista_jugadores.insert(tk.END, str(jugador))
+    def limpiar_campos(self):
+        self.entry_nombre.delete(0, tk.END)
+        self.entry_posicion.delete(0, tk.END)
+        self.entry_numero.delete(0, tk.END)
+        self.entry_edad.delete(0, tk.END)
 
 if __name__ == "__main__":
     root = tk.Tk()
