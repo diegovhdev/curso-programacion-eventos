@@ -1,0 +1,20 @@
+Nombre: jose
+Nacionalidad: mexicano
+Edad: 13
+
+Nombre: Pepe
+Nacionalidad: Peru
+Edad: 30
+
+Nombre: Pepe
+Nacionalidad: Col
+Edad: 18
+
+Nombre: Borrero
+Nacionalidad: peru
+Edad: 24
+
+Nombre: Borrero
+Nacionalidad: Peru
+Edad: 18
+
