@@ -21,3 +21,13 @@ class Videojuego:
             "fecha_de_creacion": self.fecha_de_creacion
         }
 
+    def obtener_campos(self):
+        return list(self.dictionary().keys())
+
+    def obtener_json(self):
+        json = {}
+        for key, value in self.dictionary().items():
+            json[key] = value.get()
+        del json['id']
+        return json
+
