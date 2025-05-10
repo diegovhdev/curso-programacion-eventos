@@ -18,3 +18,7 @@ Nombre: Borrero
 Nacionalidad: Peru
 Edad: 18
 
+Nombre: popo
+Nacionalidad: Colombiano
+Edad: 20
+
