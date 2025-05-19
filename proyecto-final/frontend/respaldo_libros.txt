@@ -1,5 +1,18 @@
-Título: s
-Género: lirico
-Páginas: 709
+Id: 1
 Fecha de publicacion: 2013-06-09
+Titulo: s
+Genero: lirico
+Paginas: 709
+
+Id: 4
+Fecha de publicacion: 1500-05-05
+Titulo: Don Quijote
+Genero: Fantasia
+Paginas: 200
+
+Id: 5
+Fecha de publicacion: 2020-10-10
+Titulo: Los 300
+Genero: Accion
+Paginas: 333
 

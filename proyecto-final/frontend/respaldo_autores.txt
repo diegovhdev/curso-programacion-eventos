@@ -1,23 +1,29 @@
+Id: 1
 Nombre: jose
 Nacionalidad: mexicano
 Edad: 13
 
+Id: 2
 Nombre: Pepe
 Nacionalidad: Peru
 Edad: 30
 
+Id: 3
 Nombre: Pepe
 Nacionalidad: Col
 Edad: 18
 
+Id: 4
 Nombre: Borrero
 Nacionalidad: peru
 Edad: 24
 
+Id: 5
 Nombre: Borrero
 Nacionalidad: Peru
 Edad: 18
 
+Id: 6
 Nombre: popo
 Nacionalidad: Colombiano
 Edad: 20

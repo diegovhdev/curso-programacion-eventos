@@ -17,7 +17,7 @@ def solo_caracteres_de_alfabeto(variable, label_validacion):
     return crear_evento_validador_de_campo(variable, label_validacion, regex, mensaje_de_error)
 
 def solo_caracteres_de_alfabeto_y_numeros(variable, label_de_validacion):
-    regex = re.compile(r"^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]+$")
+    regex = re.compile(r"^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9 ]+$")
     mensaje_de_error = "Solo letras o numeros"
     return crear_evento_validador_de_campo(variable, label_de_validacion, regex, mensaje_de_error)
 
