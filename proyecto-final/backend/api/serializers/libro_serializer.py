@@ -1,10 +1,5 @@
 from rest_framework import serializers
-from .models import Autor, Libro
-
-class AutorSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Autor
-        fields = '__all__'
+from api.models import Libro
 
 class LibroSerializer(serializers.ModelSerializer):
     fecha_de_publicacion = serializers.DateField(format='%Y-%m-%d')
